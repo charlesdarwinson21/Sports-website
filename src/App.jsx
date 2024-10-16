@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
 };
 
 const App = () => {
-  // return (
+  return (
     <Router>
       <Layout>
         <Routes>
