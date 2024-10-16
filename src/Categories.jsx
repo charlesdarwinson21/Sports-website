@@ -3,115 +3,52 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+const categories = [
+  { name: 'Football', img: '/football.png' },
+  { name: 'Cricket', img: '/cricket.png' },
+  { name: 'Hockey', img: '/hockey.jpeg' },
+  { name: 'Tennis', img: '/tennis.png' },
+  { name: 'Basketball', img: '/basketball.png' },
+  { name: 'Baseball', img: '/baseballl.png' },
+  { name: 'Badminton', img: '/badminton.jpg' },
+  { name: 'Table Tennis', img: '/tablet.png' },
+  { name: 'Golf', img: '/golf.png' },
+  { name: 'Rugby', img: '/rugby.png' },
+  { name: 'Volleyball', img: '/volleyball.png' },
+  { name: 'Swimming', img: '/swimming.png' },
+  { name: 'Marital Arts', img: '/marital.jpeg' },
+  { name: 'Boxing', img: '/boxing.jpg' },
+  { name: 'Skateboarding', img: '/skate.jpeg' },
+  { name: 'Wrestling', img: '/wrestling.jpg' },
+];
+
 const Categories = () => {
   return (
     <>
-      <div className='min-h-screen relative z-[2]'>
-        <StyledCategories>
-          <h1 className="title font-['Copperplate']">Sports Categories</h1>
-          <div className="card-grid title font-['Copperplate']">
-            <Link to="/products/football" className="no-underline">
-              <div className="card">
-                <img src="/football.png" alt="Football" className="card-img" />
-                <h2 className="card-title">Football</h2>
-              </div>
-            </Link>
-            <Link to="/products/cricket" className="no-underline">
-              <div className="card">
-                <img src="/cricket.png" alt="Cricket" className="card-img" />
-                <h2 className="card-title">Cricket</h2>
-              </div>
-            </Link>
-            <Link to="/products/hockey" className="no-underline">
-              <div className="card">
-                <img src="/hockey.jpeg" alt="Hockey" className="card-img" />
-                <h2 className="card-title">Hockey</h2>
-              </div>
-            </Link>
-            <Link to="/products/tennis" className="no-underline">
-              <div className="card">
-                <img src="/tennis.png" alt="Tennis" className="card-img" />
-                <h2 className="card-title">Tennis</h2>
-              </div>
-            </Link>
-            <Link to="/products/basketball" className="no-underline">
-              <div className="card">
-                <img src="/basketball.png" alt="Basketball" className="card-img" />
-                <h2 className="card-title">Basketball</h2>
-              </div>
-            </Link>
-            <Link to="/products/baseball" className="no-underline">
-              <div className="card">
-                <img src="/baseballl.png" alt="Baseball" className="card-img" />
-                <h2 className="card-title">Baseball</h2>
-              </div>
-            </Link>
-            <Link to="/products/badminton" className="no-underline">
-              <div className="card">
-                <img src="/badminton.jpg" alt="Badminton" className="card-img" />
-                <h2 className="card-title">Badminton</h2>
-              </div>
-            </Link>
-            <Link to="/products/table-tennis" className="no-underline">
-              <div className="card">
-                <img src="/tablet.png" alt="Table Tennis" className="card-img" />
-                <h2 className="card-title">Table Tennis</h2>
-              </div>
-            </Link>
-            <Link to="/products/golf" className="no-underline">
-              <div className="card">
-                <img src="/golf.png" alt="Golf" className="card-img" />
-                <h2 className="card-title">Golf</h2>
-              </div>
-            </Link>
-            <Link to="/products/rugby" className="no-underline">
-              <div className="card">
-                <img src="/rugby.png" alt="Rugby" className="card-img" />
-                <h2 className="card-title">Rugby</h2>
-              </div>
-            </Link>
-            <Link to="/products/volleyball" className="no-underline">
-              <div className="card">
-                <img src="/volleyball.png" alt="Volleyball" className="card-img" />
-                <h2 className="card-title">Volleyball</h2>
-              </div>
-            </Link>
-            <Link to="/products/swimming" className="no-underline">
-              <div className="card">
-                <img src="/swimming.png" alt="Swimming" className="card-img" />
-                <h2 className="card-title">Swimming</h2>
-              </div>
-            </Link>
-            <Link to="/products/marital-arts" className="no-underline">
-              <div className="card">
-                <img src="/marital.jpeg" alt="Marital Arts" className="card-img" />
-                <h2 className="card-title">Marital Arts</h2>
-              </div>
-            </Link>
-            <Link to="/products/boxing" className="no-underline">
-              <div className="card">
-                <img src="/boxing.jpg" alt="Boxing" className="card-img" />
-                <h2 className="card-title">Boxing</h2>
-              </div>
-            </Link>
-            <Link to="/products/skateboarding" className="no-underline">
-              <div className="card">
-                <img src="/skate.jpeg" alt="Skateboarding" className="card-img" />
-                <h2 className="card-title">Skateboarding</h2>
-              </div>
-            </Link>
-            <Link to="/products/wrestling" className="no-underline">
-              <div className="card">
-                <img src="/wrestling.jpg" alt="Wrestling" className="card-img" />
-                <h2 className="card-title">Wrestling</h2>
-              </div>
-            </Link>
-          </div>
-        </StyledCategories>
+    <div className='min-h-screen relative z-[2]'>
+    <StyledCategories>
+    
+      <h1 className="title font-['Copperplate']">Sports Categories</h1>
+      <div className="card-grid title font-['Copperplate'] ">
+        {categories.map((category, index) => (
+          <Link
+            key={index}
+            to={`/products/${category.name.toLowerCase().replace(/\s/g, '-')}`}
+            className="no-underline"
+          >
+            <div className="card">
+              <img src={category.img} alt={category.name} className="card-img" />
+              <h2 className="card-title">{category.name}</h2>
+            </div>
+          </Link>
+        ))}
       </div>
+      
+    </StyledCategories>
+    </div>
     </>
   );
-};
+}; 
 
 const StyledCategories = styled.div`
   min-height: 100vh;
@@ -135,13 +72,13 @@ const StyledCategories = styled.div`
     width: 80%;
     justify-items: center;
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Ensures the z-[2] is applied */
   }
 
   .card {
     position: relative;
-    width: 209px;
-    height: 279px;
+    width: 209px; /* 10% increase */
+    height: 279px; /* 10% increase */
     background-color: #000;
     display: flex;
     flex-direction: column;
