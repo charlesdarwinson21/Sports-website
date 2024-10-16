@@ -7,41 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Data = () => {
 
-    useGSAP(() => {
-        document.querySelectorAll(".elem").forEach(elm => {
-            let img = elm.querySelector('img');
-            let timeline = gsap.timeline();
-            let randomX = gsap.utils.random(-100, 1000); 
-            timeline
-                .set(img, {
-                    transformOrigin: `${randomX === 0 ? '50%' : '10%'}`, 
-                }, "begin")
-                .to(img, {
-                    scale: -1, 
-                    ease: 'fun',
-    
-                    scrollTrigger: {
-                        trigger: img,
-                        start: 'center',
-                        end: 'top top++',
-                        scrub: 'medium', 
-                    }
-                }, "begin") 
-                .to(elm, {
-                    xPercent: `${randomX}px`, 
-                    ease: 'Linear.easeNone', 
-    
-                    scrollTrigger: {
-                        trigger: elm,
-                        start: '0%', 
-                        end: '∞ top', 
-                        scrub: 'super-slow',
-                    }
-                });
-        });
-    });
-    
-    
     return (
         <>
             <div className="w-full bg-zinc-900">
