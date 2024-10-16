@@ -2,44 +2,28 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
+const productsByCategory = {
+  football: [{ name: 'Football Shoes', price: 3000, img: '/fs.jpg' }, ],
+  cricket: [{ name: 'Cricket Bat', price: 5000, img: '/images/cricket-bat.jpg' }],
+  hockey: [{ name: 'Hockey Stick', price: 2000, img: '/images/hockey-stick.jpg' }],
+  tennis: [{ name: 'Tennis Racket', price: 1500, img: '/images/tennis-racket.jpg' }],
+  basketball: [{ name: 'Basketball', price: 1200, img: '/images/basketball.jpg' }],
+  baseball: [{ name: 'Baseball Glove', price: 2500, img: '/images/baseball-glove.jpg' }],
+  badminton: [{ name: 'Badminton Shuttlecock', price: 300, img: '/images/shuttlecock.jpg' }],
+  'table-tennis': [{ name: 'Table Tennis Paddle', price: 800, img: '/images/tt-paddle.jpg' }],
+  golf: [{ name: 'Golf Club', price: 7000, img: '/images/golf-club.jpg' }],
+  rugby: [{ name: 'Rugby Ball', price: 1800, img: '/images/rugby-ball.jpg' }],
+  volleyball: [{ name: 'Volleyball', price: 1100, img: '/images/volleyball.jpg' }],
+  cycling: [{ name: 'Cycling Helmet', price: 2000, img: '/images/cycling-helmet.jpg' }],
+  'martial-arts': [{ name: 'Karate Gi', price: 1500, img: '/images/karate-gi.jpg' }],
+  boxing: [{ name: 'Boxing Gloves', price: 2200, img: '/images/boxing-gloves.jpg' }],
+  skateboarding: [{ name: 'Skateboard', price: 3500, img: '/images/skateboard.jpg' }],
+  wrestling: [{ name: 'Wrestling Shoes', price: 3500, img: '/images/wrestling-shoes.jpg' }],
+};
+
 const Products = () => {
   const { category } = useParams();
-  let products = [];
-
-  // Manually handle each category with an if-else block
-  if (category === 'football') {
-    products = [{ name: 'Football Shoes', price: 3000, img: '/fs.jpg' }];
-  } else if (category === 'cricket') {
-    products = [{ name: 'Cricket Bat', price: 5000, img: '/images/cricket-bat.jpg' }];
-  } else if (category === 'hockey') {
-    products = [{ name: 'Hockey Stick', price: 2000, img: '/images/hockey-stick.jpg' }];
-  } else if (category === 'tennis') {
-    products = [{ name: 'Tennis Racket', price: 1500, img: '/images/tennis-racket.jpg' }];
-  } else if (category === 'basketball') {
-    products = [{ name: 'Basketball', price: 1200, img: '/images/basketball.jpg' }];
-  } else if (category === 'baseball') {
-    products = [{ name: 'Baseball Glove', price: 2500, img: '/images/baseball-glove.jpg' }];
-  } else if (category === 'badminton') {
-    products = [{ name: 'Badminton Shuttlecock', price: 300, img: '/images/shuttlecock.jpg' }];
-  } else if (category === 'table-tennis') {
-    products = [{ name: 'Table Tennis Paddle', price: 800, img: '/images/tt-paddle.jpg' }];
-  } else if (category === 'golf') {
-    products = [{ name: 'Golf Club', price: 7000, img: '/images/golf-club.jpg' }];
-  } else if (category === 'rugby') {
-    products = [{ name: 'Rugby Ball', price: 1800, img: '/images/rugby-ball.jpg' }];
-  } else if (category === 'volleyball') {
-    products = [{ name: 'Volleyball', price: 1100, img: '/images/volleyball.jpg' }];
-  } else if (category === 'cycling') {
-    products = [{ name: 'Cycling Helmet', price: 2000, img: '/images/cycling-helmet.jpg' }];
-  } else if (category === 'martial-arts') {
-    products = [{ name: 'Karate Gi', price: 1500, img: '/images/karate-gi.jpg' }];
-  } else if (category === 'boxing') {
-    products = [{ name: 'Boxing Gloves', price: 2200, img: '/images/boxing-gloves.jpg' }];
-  } else if (category === 'skateboarding') {
-    products = [{ name: 'Skateboard', price: 3500, img: '/images/skateboard.jpg' }];
-  } else if (category === 'wrestling') {
-    products = [{ name: 'Wrestling Shoes', price: 3500, img: '/images/wrestling-shoes.jpg' }];
-  }
+  const products = productsByCategory[category] || [];
 
   return (
     <div className="min-h-screen p-6 bg-[#18181b] relative z-[2]">
