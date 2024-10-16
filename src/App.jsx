@@ -26,7 +26,18 @@ const Layout = ({ children }) => {
 };
 
 const App = () => {
-  // return (
+    // Lenis Smooth Scroll setup
+  useEffect(() => {
+    const lenis = new Lenis();
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy(); // Cleanup on unmount
+  }, []);
+  return (
     <Router>
       <Layout>
         <Routes>
